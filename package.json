@@ -1,0 +1,11 @@
+{
+  "name": "sw-test",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "sw-precache": "sw-precache --config=sw-precache-config.js --verbose"
+  },
+  "dependencies": {
+    "sw-precache": "~5.2.0"
+  }
+}
