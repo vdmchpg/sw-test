@@ -189,14 +189,10 @@ self.addEventListener('activate', function(event) {
 
   event.waitUntil(
     caches.open(cacheName).then(function(cache) {
-      console.log('cache.keys', cache.keys(), cacheName);
       return cache.keys().then(function(existingRequests) {
-        console.log('existingRequests', existingRequests);
         return Promise.all(
           existingRequests.map(function(existingRequest) {
-            console.log(existingRequest.url);
             if (!setOfExpectedUrls.has(existingRequest.url)) {
-              console.log('delete');
               return cache.delete(existingRequest);
             }
           })
@@ -289,7 +285,8 @@ self.addEventListener('fetch', function(event) {
 
 // Runtime cache configuration, using the sw-toolbox library.
 
-toolbox.router.get(/fcxfccvgf/, toolbox.networkFirst, {"name":"index html"});
+toolbox.router.get(/fcxfccvgf/, toolbox.cacheFirst, {"name":"some other routes"});
+toolbox.router.get(/(.*)/, toolbox.networkOnly, {"name":"index html"});
 
 
 

@@ -1,6 +1,5 @@
 module.exports = {
   staticFileGlobs: [
-    '**.html'
   ],
   stripPrefix: '/',
   runtimeCaching: [
@@ -9,6 +8,13 @@ module.exports = {
       handler: 'cacheFirst',
       options: {
         name: 'some other routes'
+      }
+    },
+    {
+      urlPattern: /(.*)/,
+      handler: 'networkOnly',
+      options: {
+        name: 'index html'
       }
     }
   ]
