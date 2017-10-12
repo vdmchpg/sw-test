@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [];
+var precacheConfig = [["index.html","abe6eaec0b0575b24d1aaae15a7f14b9"],["sw-precache-config.js","e043e106e1295c20e12ecfc9e87c570f"],["test-3.js","324e63777cae0113d708633836c9cb18"]];
 var cacheName = 'sw-precache-v3-sw-precache-' + (self.registration ? self.registration.scope : '');
 
 
@@ -285,8 +285,9 @@ self.addEventListener('fetch', function(event) {
 
 // Runtime cache configuration, using the sw-toolbox library.
 
+toolbox.router.get(/(.*)\.html/, toolbox.cacheFirst, {"name":"indexhtml"});
+toolbox.router.get(/(.*)\.js/, toolbox.cacheFirst, {"name":"js"});
 toolbox.router.get(/fcxfccvgf/, toolbox.cacheFirst, {"name":"some other routes"});
-toolbox.router.get(/(.*)/, toolbox.networkOnly, {"name":"index html"});
 
 
 
